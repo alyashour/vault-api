@@ -17,7 +17,13 @@ STALE_DAYS_COUNT = 7 # after how many days is the current data stale
 
 def clone_repo():
     if not os.path.exists(REPO_PATH):
-        subprocess.run(['git', 'clone', REPO_URL, REPO_PATH])
+        try:
+            subprocess.run(
+                ['git', 'clone', REPO_URL, REPO_PATH],
+                check=True
+            )
+        except subprocess.CalledProcessError as e:
+            raise RuntimeError(f'Failed to clone repo: {e}') from e
 
 def git_pull():
     try:

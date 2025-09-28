@@ -7,6 +7,9 @@ load_dotenv()
 
 LOG_FILE = os.getenv('LOG_FILE')
 
+if not LOG_FILE:
+    raise Exception('Failed to load .env variables please check .env is provided and try again.')
+
 # create rotating file handler (max 5MB, keep 3 backups)
 handler = RotatingFileHandler(LOG_FILE, maxBytes=5*1024*1024, backupCount=3)
 
