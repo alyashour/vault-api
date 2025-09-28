@@ -1,0 +1,19 @@
+# Python
+.venv/
+**/__pycache__/
+**/*.pyc
+
+# IDEs
+.vscode/
+
+# MacOS
+**/.DS_Store
+
+# Logs
+logs/*
+
+# Data folder (contains cloned repo)
+data/
+
+# env file
+.env
